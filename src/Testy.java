@@ -50,6 +50,30 @@ public class Testy {
         exp = 155;
     }
 
+    @Test
+    public void test6() {
+        wynik = k.suma("1\n2,3");
+        exp = 6;
+    }
+
+    @Test
+    public void test7() {
+        wynik = k.suma("5\n4\n7,7,8\n10");
+        exp = 41;
+    }
+
+    @Test
+    public void test8() {
+        wynik = k.suma("//;\n1;2");
+        exp = 3;
+    }
+
+    @Test
+    public void test9() {
+        wynik = k.suma("//<\n1<10<7,8\n15<5");
+        exp = 46;
+    }
+
     @After
     public void sprawdz() {
         assertEquals(wynik, exp);
