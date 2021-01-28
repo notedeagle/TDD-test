@@ -17,12 +17,18 @@ public class Kalkulator {
             int[] arr = Arrays.stream(a.split(sep)).mapToInt(Integer::parseInt).toArray();
 
             for (int i : arr) {
+                if (i < 0) {
+                    throw new IllegalArgumentException("Liczby ujemne nie dozwolone " + Arrays.toString(Arrays.stream(arr).filter(s -> s < 0).toArray()));
+                }
                 suma += i;
             }
         } else {
             int[] arr = Arrays.stream(a.split("[,\n]")).mapToInt(Integer::parseInt).toArray();
 
             for (int i : arr) {
+                if (i < 0) {
+                    throw new IllegalArgumentException("Liczby ujemne nie dozwolone " + Arrays.toString(Arrays.stream(arr).filter(s -> s < 0).toArray()));
+                }
                 suma += i;
             }
 

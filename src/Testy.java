@@ -2,6 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Testy {
 
@@ -73,6 +74,19 @@ public class Testy {
         wynik = k.suma("//<\n1<10<7,8\n15<5");
         exp = 46;
     }
+
+    @Test
+    public void test10() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> k.suma("-8,1,-2"));
+        System.out.println(exception.getMessage());
+    }
+
+    @Test
+    public void test11() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> k.suma("-5,10,-2\n5\n-3"));
+        System.out.println(exception.getMessage());
+    }
+
 
     @After
     public void sprawdz() {
