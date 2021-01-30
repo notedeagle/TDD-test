@@ -87,9 +87,75 @@ public class Testy {
         System.out.println(exception.getMessage());
     }
 
+    @Test
+    public void test12() {
+        wynik = k.suma("1500,999,1,1001");
+        exp = 1000;
+    }
+
+    @Test
+    public void test13() {
+        wynik = k.suma("1001,15,5,1234");
+        exp = 20;
+    }
+
+    @Test
+    public void test14() {
+        wynik = k.suma("2000,2");
+        exp = 2;
+    }
+
+    @Test
+    public void test15() {
+        wynik = k.suma("//[***]\n1***2***3");
+        exp = 6;
+    }
+
+    @Test
+    public void test16() {
+        wynik = k.suma("//[+-=*/]\n5+-=*/10+-=*/8");
+        exp = 23;
+    }
+
+    @Test
+    public void test17() {
+        wynik = k.suma("//[*]\n1*2*3*6");
+        exp = 12;
+    }
+
+    @Test
+    public void test18() {
+        wynik = k.suma("//[*][;]\n1*2;3");
+        exp = 6;
+    }
+
+    @Test
+    public void test19() {
+        wynik = k.suma("//[+][*][;][%]\n1+2*3%4;5");
+        exp = 15;
+    }
+
+    @Test
+    public void test20() {
+        wynik = k.suma("//[++][***][;][%%%%]\n1++2***3;4%%%%5");
+        exp = 15;
+    }
+
+    @Test
+    public void test21() {
+        wynik = k.suma("//[##$][#][&&&][+-+][***]\n1#2&&&3+-+4***5##$5");
+        exp = 20;
+    }
+
+    @Test
+    public void test22() {
+        wynik = k.suma("//[^][+-+-+][!@#$][***][&]\n1^2+-+-+3!@#$5***6&10+-+-+3");
+        exp = 30;
+    }
+
 
     @After
     public void sprawdz() {
-        assertEquals(wynik, exp);
+        assertEquals(exp, wynik);
     }
 }
