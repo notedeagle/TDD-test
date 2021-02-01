@@ -14,15 +14,15 @@ public class Kalkulator {
             String s = a.substring(a.indexOf("//[") + 3, a.indexOf('\n') - 1);
             s = s.replace("[", "");
             String[] arrS = s.split("]");
-            String separtor = "";
+            StringBuilder separator = new StringBuilder();
 
             for (String i : arrS) {
-                separtor += Pattern.quote(i) + "|";
+                separator.append(Pattern.quote(i)).append("|");
             }
 
-            separtor = separtor.substring(0, separtor.length() - 1);
+            separator.deleteCharAt(separator.length() - 1);
             a = a.substring(a.indexOf("\n") + 1);
-            int[] arr = Arrays.stream(a.split(separtor)).mapToInt(Integer::parseInt).toArray();
+            int[] arr = Arrays.stream(a.split(separator.toString())).mapToInt(Integer::parseInt).toArray();
 
             suma = getSuma(suma, arr);
 
